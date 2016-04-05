@@ -1,0 +1,64 @@
+<template name="login">
+    <div id="login-wrapper" class="cyan valign-wrapper">
+        <div id="login-page" class="row valign">
+            <div class="col s12 z-depth-4 card-panel">
+                <form id="login-form" class="login-form">
+                    <div class="row">
+
+                        <div class="input-field col s12 center-align" >
+                            <img src="images/login-logo.png" alt=""
+                                 class="circle responsive-img center profile-image-login">
+                            <div class="col s12">
+
+                                <h5>Writer Assist</h5>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                        </div>
+
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s12">
+                            <i class="mdi-communication-email prefix"></i>
+                            <input id="email" type="text">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s12">
+                            <i class="mdi-action-lock-outline prefix"></i>
+                            <input id="password" type="password">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 l12  login-text">
+                            <input type="checkbox" id="remember-me"/>
+                            <label for="remember-me">"Remember me</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button type="submit" href="#" class="btn waves-effect waves-light col s12">Login</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6 m6 l6">
+                            <p class="margin medium-small"><a
+                                    href="{{pathFor route="register"}}">Register Now!</a></p>
+                        </div>
+                        <div class="input-field col s6 m6 l6">
+                            <p class="margin right-align medium-small">
+                                <a href="#">Forgot password?</a>
+                            </p>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</template>
