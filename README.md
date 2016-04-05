@@ -1,4 +1,4 @@
-# writerassist
+# Writer Assist
 Smart writing assistant for content writers.
 
 WriterAssist.info is simple, distraction free writing app. WriterAssist show you
