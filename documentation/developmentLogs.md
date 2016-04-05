@@ -13,3 +13,5 @@ digitalocean ns recors.
 9. Removed meteor insecure and autopublish packages
 10. General file structure is organized
 11. Material Design template is added
+12. MUP (Meteor Up) node package is used for deployment, first deployment is
+done
