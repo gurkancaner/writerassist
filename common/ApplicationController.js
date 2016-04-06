@@ -8,7 +8,7 @@ ApplicationController = RouteController.extend({
       self.layout('masterPublic');
       self.next();
     } else {
-      if (Meteor.userId == undefined || Meteor.userId() === null) {
+      if (Meteor.userId() === null) {
         Router.go('login');
       } else {
         self.next();

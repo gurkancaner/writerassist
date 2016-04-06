@@ -1,4 +1,6 @@
-
+Tracker.autorun(function() {
+  Meteor.subscribe("userData"); //access additional user data
+})
 
 Template.sideNav.onRendered(function() {
   /*================================================================================

@@ -35,12 +35,18 @@ Router.route('accessDenied', function() {
 
 
 Router.route('/', {
-  name: 'home',
-  template: 'home'
+  name: 'stories',
+  template: 'stories'
 });
 
 //auth
-Router.route('login');
+Router.route('login', function() {
+  if (Meteor.userId()) {
+    Router.go("/");
+  } else {
+    this.render();
+  }
+});
 Router.route('register');
 Router.route('logout', function() {
   Meteor.logout();

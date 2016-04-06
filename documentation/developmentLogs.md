@@ -15,3 +15,5 @@ digitalocean ns recors.
 11. Material Design template is added
 12. MUP (Meteor Up) node package is used for deployment, first deployment is
 done
+13. Created Twitter app on Twitter for Login with Twitter functionality
+14. Twitter login is implemented, its working now
