@@ -33,6 +33,14 @@ Template.storyAdd.events({
   },
   'click #delete-story-button': function(event, target) {
     $('#confirm-delete').openModal();
+  },
+  'focus #content': function(event, target) {
+    var keywords = $("#title").val();
+    if (keywords) {
+      Meteor.call("twitterSearch", keywords, function(error, result) {
+        Session.set("twitterSearchResult", result.statuses);
+      });
+    }
   }
 });
 
