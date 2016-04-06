@@ -33,12 +33,6 @@ Router.route('accessDenied', function() {
   where: "server"
 });
 
-
-Router.route('/', {
-  name: 'stories',
-  template: 'stories'
-});
-
 //auth
 Router.route('login', function() {
   if (Meteor.userId()) {
@@ -47,8 +41,32 @@ Router.route('login', function() {
     this.render();
   }
 });
-Router.route('register');
 Router.route('logout', function() {
   Meteor.logout();
   Router.go("login");
+});
+
+//story
+Router.route('/', {
+  name: 'stories',
+  template: 'stories'
+});
+Router.route('story/add');
+Router.route('story/edit/:_id', {
+  data: function() {
+    return Stories.findOne({
+      _id: this.params._id,
+      user: Meteor.userId()
+    });
+  },
+  template: "storyAdd"
+});
+Router.route('story/:_id', {
+  data: function() {
+    return Stories.findOne({
+      _id: this.params._id,
+      user: Meteor.userId()
+    });
+  },
+  template: "storyView"
 });

@@ -1,6 +1,12 @@
 Tracker.autorun(function() {
   Meteor.subscribe("userData"); //access additional user data
+  Meteor.subscribe("stories"); //access current users stories
+});
+
+Meteor.startup(function() {
+  moment.locale("en");
 })
+
 
 Template.sideNav.onRendered(function() {
   /*================================================================================

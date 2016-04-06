@@ -17,3 +17,5 @@ digitalocean ns recors.
 done
 13. Created Twitter app on Twitter for Login with Twitter functionality
 14. Twitter login is implemented, its working now
+15. Story adding, editing, listing is done.
+16. A few small touches like date formatting, story count etc.
