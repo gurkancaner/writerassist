@@ -20,3 +20,4 @@ done
 15. Story adding, editing, listing is done.
 16. A few small touches like date formatting, story count etc.
 17. Twitter search integration is done, pulls tweets according to title
+18. Flickr search integration is done, also search according to title

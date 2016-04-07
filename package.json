@@ -5,6 +5,7 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "flickrapi": "^0.4.2",
     "twit": "^2.2.3"
   }
 }

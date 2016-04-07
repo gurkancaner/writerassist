@@ -1,20 +1,19 @@
 Meteor.methods({
-  "twitterSearch": function(term) {
+  "flickrSearch": function(term) {
     if (!Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }
-    //Twitter search
-    var twitterGetSync = Meteor.wrapAsync(Twitter.get, Twitter);
+
+    var searchSync = Meteor.wrapAsync(Flickr.photos.search, Flickr.photos);
     try {
-      var result = twitterGetSync('search/tweets', {
-        q: term,
-        count: 10
+      var result = searchSync({
+        tags: term,
+        media: "photo",
+        per_page: 10
       });
       return result;
     } catch (error) {
       throw new Meteor.Error(error);
     }
-
-
   }
 });

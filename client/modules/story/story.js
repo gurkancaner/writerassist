@@ -40,6 +40,10 @@ Template.storyAdd.events({
       Meteor.call("twitterSearch", keywords, function(error, result) {
         Session.set("twitterSearchResult", result.statuses);
       });
+      Meteor.call("flickrSearch", keywords, function(error, result) {
+        console.log("flickrSearch error", error, "result", result);
+        Session.set("flickrSearchResult", result.photos.photo);
+      });
     }
   }
 });

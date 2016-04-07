@@ -45,7 +45,33 @@
       </div>
     </div>
     <div class="col s4 m4 l4">
-      {{> twitterWidget}}
+      <div>
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs tab-demo z-depth-1" style="width: 100%;">
+              <li class="tab col s3"><a class="active" href="#twitterSection">Twitter</a>
+              </li>
+              <li class="tab col s3"><a href="#flickrSection" class="">Flickr</a>
+              </li>
+
+              <div class="indicator" style="right: 592px; left: 0px;"></div>
+              <div class="indicator" style="right: 592px; left: 0px;"></div>
+            </ul>
+          </div>
+          <div class="col s12">
+            <div id="twitterSection" class="col s12" style="display: block;">
+              {{> twitterWidget}}
+            </div>
+            <div id="flickrSection" class="col s12" style="display: none;">
+              {{> flickrWidget}}
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+
     </div>
   </div>
   <!-- Modal Structure -->
