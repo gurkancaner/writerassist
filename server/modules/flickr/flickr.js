@@ -3,7 +3,8 @@ Meteor.methods({
     if (!Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }
-    if (Flickr) {
+    //it takes some time Flickr to initialize (related to Flickr api)
+    if (typeof Flickr !== "undefined") {
       var searchSync = Meteor.wrapAsync(Flickr.photos.search, Flickr.photos);
       try {
         var result = searchSync({
@@ -16,6 +17,6 @@ Meteor.methods({
         throw new Meteor.Error(error);
       }
     }
-    throw new Meteor.Error("Flick not initialized");
+    throw new Meteor.Error("Flicker not initialized");
   }
 });

@@ -1,4 +1,9 @@
 <template name="twitterWidget">
+  {{#unless Tweets}}
+  <div>
+    Write something on title to get related tweets!
+  </div>
+  {{/unless}}
   {{#each Tweets}}
   <div id="profile-page-wall-post" class="card">
     <div class="tweet-container card-profile-title">

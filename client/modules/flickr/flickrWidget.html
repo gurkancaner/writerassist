@@ -1,5 +1,9 @@
 <template name="flickrWidget">
-  {{#each FlickrPhotos}}
+  {{#unless FlickrPhotos}}
+  <div>
+    No related photo with this title!
+  </div>
+  {{/unless}} {{#each FlickrPhotos}}
   <div class="card">
     <div class="card-image">
       <img src="{{flickrUrl this}}" alt="{{title}}">
@@ -8,8 +12,7 @@
       <p>{{title}}</p>
     </div>
     <div class="card-action">
-      <a href="#">This is a link</a>
-      <a href="#">This is a link</a>
+      <a href="#" data-url="{{flickrUrlBig this}}" id="add-to-story">Add to Story</a>
     </div>
   </div>
   {{/each}}

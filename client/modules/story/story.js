@@ -1,23 +1,17 @@
-Template.quillEditor.onRendered(function() {
-  // Initialize editor with custom theme and modules
-  setTimeout(function() {
-    fullEditor = new Quill('#full-editor', {
-      modules: {
-        'toolbar': '#full-toolbar',
-        'link-tooltip': true
-      },
-      theme: 'snow'
-    });
-  }, 5000);
+Template.storyAdd.onRendered = function() {
+  $(document).ready(function() {
+    $('ul.tabs').tabs();
+  });
 
-});
+}
 Template.storyAdd.events({
   'submit #add-story': function(event, target) {
     event.preventDefault();
     //retrieve the input field values
     var id = target.find("#id").value;
     var title = target.find("#title").value;
-    var content = fullEditor.getHTML();
+    // var content = Session.get("froalaEditorContent");
+    var content = $('div.froalaEditorContent').froalaEditor('html.get');
 
     var method = "storyAdd";
     if (id) {
@@ -51,10 +45,18 @@ Template.storyAdd.events({
     var keywords = $("#title").val();
     if (keywords) {
       Meteor.call("twitterSearch", keywords, function(error, result) {
-        Session.set("twitterSearchResult", result.statuses);
+        if (error) {
+          console.log("twitterSearch error", error);
+        } else {
+          Session.set("twitterSearchResult", result.statuses);
+        }
       });
       Meteor.call("flickrSearch", keywords, function(error, result) {
-        Session.set("flickrSearchResult", result.photos.photo);
+        if (error) {
+          console.log("flickr error", error);
+        } else {
+          Session.set("flickrSearchResult", result.photos.photo);
+        }
       });
     }
   }, 1000)

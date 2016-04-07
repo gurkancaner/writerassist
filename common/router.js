@@ -65,7 +65,7 @@ Router.route('story/:_id', {
   data: function() {
     return Stories.findOne({
       _id: this.params._id,
-      user: Meteor.userId()
+    //user: Meteor.userId() //for the time being everybody can see each others story if knows the id
     });
   },
   template: "storyView"

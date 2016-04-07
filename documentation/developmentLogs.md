@@ -21,3 +21,7 @@ done
 16. A few small touches like date formatting, story count etc.
 17. Twitter search integration is done, pulls tweets according to title
 18. Flickr search integration is done, also search according to title
+19. Tried quill editor, it is working but not stable, I am going to try Froala
+editor
+20. Froala editor is working good
+21. Adding Flickr search results to content is done

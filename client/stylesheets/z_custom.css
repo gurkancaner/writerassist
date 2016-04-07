@@ -13,9 +13,9 @@ span.badge.new:after {
 .tweet-container{
   padding:  0.3em 0.3em 0 1em !important
 }
-#full-toolbar .select-wrapper{
-  display: none !important;
+.froalaEditorContent ul{
+  padding-left: 40px;
 }
-#full-editor{
-  border-bottom: 1px solid #9e9e9e;
+.froalaEditorContent ul li{
+  list-style-type: disc;
 }
