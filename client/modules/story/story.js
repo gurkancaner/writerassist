@@ -1,9 +1,3 @@
-Template.storyAdd.onRendered = function() {
-  $(document).ready(function() {
-    $('ul.tabs').tabs();
-  });
-
-}
 Template.storyAdd.events({
   'submit #add-story': function(event, target) {
     event.preventDefault();
@@ -11,7 +5,7 @@ Template.storyAdd.events({
     var id = target.find("#id").value;
     var title = target.find("#title").value;
     // var content = Session.get("froalaEditorContent");
-    var content = $('div.froalaEditorContent').froalaEditor('html.get');
+    var content = $('#summernote').summernote('code');
 
     var method = "storyAdd";
     if (id) {
@@ -41,10 +35,46 @@ Template.storyAdd.events({
   'click #delete-story-button': function(event, target) {
     $('#confirm-delete').openModal();
   },
-  'input #title': _.debounce(function(event, target) {
-    var keywords = $("#title").val();
-    if (keywords) {
-      Meteor.call("twitterSearch", keywords, function(error, result) {
+  'summernote.change #summernote': function(event, target, content) {
+    var lastChekPoint = Session.get("lastChekPoint");
+    if (lastChekPoint === undefined) {
+      if (target.data !== null) {
+        lastChekPoint = target.data.content.length;
+      } else {
+        lastChekPoint = 0;
+      }
+    }
+
+
+    if (content.length > 100) { //is content enought to extract keywords
+      if (Math.abs(lastChekPoint - content.length) > 100) { //are there enough changes
+        Session.set("lastChekPoint", content.length);
+        Meteor.call("alchemyGetKeywords", content, function(error, data) {
+          if (error) {
+            console.log("alchemyGetKeywordsError", error);
+          } else {
+            searchTwitterandFlickr(data);
+          }
+        });
+      }
+    } else { //search by title
+      var keywords = $("#title").val();
+      searchTwitterandFlickr(keywords);
+    }
+    function searchTwitterandFlickr(keywords) {
+
+      var searchTerms = "";
+      if (typeof keywords === "string") {
+        if (keywords == Session.get("keywords"))
+          return;
+        Session.set("keywords", keywords);
+        searchTerms = keywords.replace(" ", ", ");
+      } else {
+        for (i = 0; i < keywords.length; i++) {
+          searchTerms += keywords[i].text + ", ";
+        }
+      }
+      Meteor.call("twitterSearch", searchTerms, function(error, result) {
         if (error) {
           console.log("twitterSearch error", error);
         } else {
@@ -59,7 +89,8 @@ Template.storyAdd.events({
         }
       });
     }
-  }, 400),
+
+  }
 });
 
 Template.stories.helpers({

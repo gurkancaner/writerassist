@@ -1,3 +1,9 @@
+Template.flickrWidget.onRendered = function() {
+  $(document).ready(function() {
+    $('ul.tabs').tabs();
+  });
+
+}
 Template.flickrWidget.helpers({
   FlickrPhotos: function() {
     return Session.get("flickrSearchResult");
@@ -18,10 +24,7 @@ Template.flickrWidget.events({
   "click #add-to-story": function(event, template) {
     event.preventDefault();
     var url = event.target.dataset.url;
-    $('.froalaEditorContent').froalaEditor('image.insert', url, true, {
-      'name': 'image_name',
-      'id': 'image_1'
-    });
+    $('#summernote').summernote('insertImage', url);
 
   }
 });

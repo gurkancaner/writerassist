@@ -28,3 +28,4 @@ editor
 22. Share on Twitter button is working
 23. AlchemyLanguage api integration is done for semantic keywords extraction
 24. Froala editor licensing problem arised, therefore I need to change editor
+25. I've changed to summernote editor, everything seems working now
