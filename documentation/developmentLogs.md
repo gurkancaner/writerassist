@@ -25,3 +25,4 @@ done
 editor
 20. Froala editor is working good
 21. Adding Flickr search results to content is done
+22. Share on Twitter button is working
