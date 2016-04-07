@@ -4,7 +4,7 @@ Template.registerHelper('isActive', function(route) {
 });
 //used for pretty print date
 Template.registerHelper('formatDate', function(date) {
-  var momentDate = moment(date);
+  var momentDate = moment(new Date(date));
   if (momentDate.isSame(new Date(), "day")) { //today
     return momentDate.format("LT");
   } else {

@@ -10,11 +10,11 @@ Meteor.startup(function() {
 
 Template.sideNav.onRendered(function() {
   /*================================================================================
-   Item Name: Materialize - Material Design Admin Template
-   Version: 2.3
-   Author: GeeksLabs
-   Author URL: http://www.themeforest.net/user/geekslabs
-   ================================================================================*/
+  Item Name: Materialize - Material Design Admin Template
+  Version: 3.0
+  Author: GeeksLabs
+  Author URL: http://www.themeforest.net/user/geekslabs
+================================================================================*/
 
   $(function() {
 
@@ -59,8 +59,14 @@ Template.sideNav.onRendered(function() {
     }
 
     /*----------------------
-     * Plugin initialization
-     ------------------------*/
+    * Plugin initialization
+    ------------------------*/
+
+    $('select').material_select();
+    // Set checkbox on forms.html to indeterminate
+    var indeterminateCheckbox = document.getElementById('indeterminate-checkbox');
+    if (indeterminateCheckbox !== null)
+      indeterminateCheckbox.indeterminate = true;
 
     // Materialize Slider
     $('.slider').slider({
@@ -77,6 +83,28 @@ Template.sideNav.onRendered(function() {
       gutter: 0, // Spacing from edge
       belowOrigin: true // Displays dropdown below the button
     });
+    // Translation Dropdown
+    $('.translation-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: true, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    }
+    );
+    // Notification Dropdown
+    $('.notification-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: true, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    }
+    );
 
     // Materialize Tabs
     $('.tab-demo').show().tabs();
@@ -84,7 +112,19 @@ Template.sideNav.onRendered(function() {
 
     // Materialize Parallax
     $('.parallax').parallax();
-    $('.modal-trigger').leanModal();
+    // Materialize Modal
+    $('.modal-trigger').leanModal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      in_duration: 300, // Transition in duration
+      out_duration: 200, // Transition out duration
+      ready: function() {
+        //alert('Ready');
+      }, // Callback for Modal open
+      complete: function() {
+        //alert('Closed');
+      } // Callback for Modal close
+    });
 
     // Materialize scrollSpy
     $('.scrollspy').scrollSpy();
@@ -105,7 +145,9 @@ Template.sideNav.onRendered(function() {
     $('.menu-sidebar-collapse').sideNav({
       menuWidth: 240,
       edge: 'left', // Choose the horizontal origin
-    //defaultOpen:true // Set if default menu open is true
+      //closeOnClick:true, // Set if default menu open is true
+      menuOut: false // Set if default menu open is true
+
     });
 
     // HORIZONTAL MENU (Layout 03)
@@ -200,6 +242,10 @@ Template.sideNav.onRendered(function() {
       })
     });
 
+    //Alerts
+    $("#card-alert .close").click(function() {
+      $(this).closest('#card-alert').fadeOut('slow');
+    });
 
     //Toggle Containers on page
     var toggleContainersButton = $('#container-toggle-button');
@@ -229,5 +275,7 @@ Template.sideNav.onRendered(function() {
         overflow: 'auto'
       })
     }
+
+
   }); // end of document ready
 });

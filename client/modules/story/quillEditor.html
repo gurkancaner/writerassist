@@ -1,0 +1,24 @@
+<template name="quillEditor">
+  <!-- Create the toolbar container -->
+  <div id="full-toolbar">
+    <span class="ql-format-group">
+  <span title="Bold" class="ql-format-button ql-bold"></span>
+    <span class="ql-format-separator"></span><span title="Italic" class="ql-format-button ql-italic"></span><span class="ql-format-separator"></span>
+    <span title="Underline" class="ql-format-button ql-underline"></span>
+  </span><span class="ql-format-group hidden">
+                <select title="Text Alignment" class="ql-align">
+                  <option value="left" selected></option>
+                  <option value="center"></option>
+                  <option value="right"></option>
+                  <option value="justify"></option>
+                </select></span>
+    <span class="ql-format-group"><span title="Link" class="ql-format-button ql-link"></span><span class="ql-format-separator"></span><span title="Image" class="ql-format-button ql-image"></span><span class="ql-format-separator"></span>
+    <span title="List" class="ql-format-button ql-list"></span>
+    </span>
+  </div>
+
+  <!-- Create the editor container -->
+  <div id="full-editor">
+    {{{content}}}
+  </div>
+</template>
