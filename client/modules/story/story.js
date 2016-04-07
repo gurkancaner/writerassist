@@ -53,7 +53,8 @@ Template.storyAdd.events({
           if (error) {
             console.log("alchemyGetKeywordsError", error);
           } else {
-            searchTwitterandFlickr(data);
+            if (data)
+              searchTwitterandFlickr(data);
           }
         });
       }
@@ -77,14 +78,15 @@ Template.storyAdd.events({
       Meteor.call("twitterSearch", searchTerms, function(error, result) {
         if (error) {
           console.log("twitterSearch error", error);
-        } else {
+        } else if (result) {
+          // console.log("twitter search result", result);
           Session.set("twitterSearchResult", result.statuses);
         }
       });
-      Meteor.call("flickrSearch", keywords, function(error, result) {
+      Meteor.call("flickrSearch", searchTerms, function(error, result) {
         if (error) {
           console.log("flickr error", error);
-        } else {
+        } else if (result) {
           Session.set("flickrSearchResult", result.photos.photo);
         }
       });

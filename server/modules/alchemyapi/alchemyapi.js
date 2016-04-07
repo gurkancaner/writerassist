@@ -10,7 +10,9 @@ Meteor.methods({
     try {
       var response = alchemyGetKeywordsSync(params);
       //console.log(response)
-      return response.keywords.slice(0, 5);
+      if (response && response.keywords)
+        return response.keywords.slice(0, 5);
+      return;
     } catch (error) {
       console.log("alchemy error", error);
       throw new Meteor.Error(JSON.stringify(error, null, 2));

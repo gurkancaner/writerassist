@@ -3,6 +3,7 @@ Meteor.methods({
     if (!Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }
+    console.log("flickrSearchKeywords", term)
     //it takes some time Flickr to initialize (related to Flickr api)
     if (typeof Flickr !== "undefined") {
       var searchSync = Meteor.wrapAsync(Flickr.photos.search, Flickr.photos);
