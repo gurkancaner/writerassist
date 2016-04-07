@@ -18,16 +18,28 @@ Template.froalaEditor.helpers({
 
       // FE save.before event handler function:
       "_onsave.before": function(e, editor) {
-        // // Get edited HTML from Froala-Editor
-        // var newHTML = editor.html.get(true /* keep_markers */ );
-        // // Do something to update the edited value provided by the Froala-Editor plugin, if it has changed:
-        // if (!_.isEqual(newHTML, self.content)) {
-        //   Session.set("froalaEditorContent", newHTML);
-        //
-        // // myCollection.update({_id: self._id}, {
-        // //   $set: {myHTMLField: newHTML}
-        // // });
-        // }
+        // Get edited HTML from Froala-Editor
+        var newHTML = editor.html.get(true /* keep_markers */ );
+        var lastChekPoint = Session.get("lastChekPoint");
+        if (lastChekPoint === undefined) {
+          lastChekPoint = self.content.length;
+        }
+
+        // Get keywords for the edited value provided by the Froala-Editor plugin, if it has changed:
+        if (newHTML.length > 100) {
+          if (Math.abs(lastChekPoint - newHTML.length) > 100) {
+            Session.set("lastChekPoint", newHTML);
+            Meteor.call("alchemyGetKeywords", newHTML, function(error, data) {
+              if (error) {
+                console.log("alchemyGetKeywords", error);
+              } else {
+                console.log("keywords", data);
+              }
+            });
+          }
+        } else { //get by title
+
+        }
         return false; // Stop Froala Editor from POSTing to the Save URL
       },
     }

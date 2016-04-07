@@ -59,7 +59,7 @@ Template.storyAdd.events({
         }
       });
     }
-  }, 1000)
+  }, 400),
 });
 
 Template.stories.helpers({
