@@ -62,7 +62,7 @@ Template.storyAdd.events({
       searchTwitterandFlickr(keywords);
     }
     function searchTwitterandFlickr(keywords) {
-
+      $('ul.tabs').tabs(); //hack
       var searchTerms = "";
       if (typeof keywords === "string") {
         if (keywords == Session.get("keywords"))
